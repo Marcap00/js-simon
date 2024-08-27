@@ -19,14 +19,11 @@
     <div id="wrapper" class="vh-100 d-flex justify-content-center align-items-center">
         <form action="#">
         <h2 class="text-center">Cerca di memorizzare i numeri qui sotto.</h2>
+        <p class="fw-semibold d-flex justify-content-center align-items-center gap-2">Tempo rimanente: <span id="counter" class="text-danger fs-2 fw-semibold"></span></p>
         <ul id="random-number" class="d-flex justify-content-center justify-content-between p-0 fw-semibold fs-2">
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
-            <li>1</li>
+            
         </ul>
-        <div class="row justify-content-center d-none">
+        <div id="inputs" class="row justify-content-center d-none">
             <div class="col-1">
                 <input class="form-control" type="number">
             </div>
@@ -44,7 +41,7 @@
             </div>
         </div>
         <div class="buttons d-flex justify-content-center my-3">
-            <button class="btn btn-primary w-25">Gioca</button>
+            <button id="button" class="btn btn-primary w-25">Gioca</button>
         </div>
         </form>
     </div>
