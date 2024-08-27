@@ -99,7 +99,7 @@ function endGame(interval) {
     // Imponiamo una condizione in counter === 0
     if(counter === 0) {
         // Stoppiamo dopo 30 secondi il counter
-        clearInterval(interval, 1000);
+        clearInterval(interval, 30000);
         // Facciamo apparire gli elementi con una funzione
         AppearElements();
         // Mettiamo in ascolto il bottone submit sul click
@@ -143,7 +143,7 @@ const result = document.getElementById('result');
 // Preparo le variabili
 // Preparo il numero di elementi max da creare
 const maxLength = 5;
-let counter =1;
+let counter = 30;
 let randomNumbers = [];
 let inputsValue = [];
 let score = 0;
