@@ -20,11 +20,18 @@ Generiamo gli input da JS, invece di scriverli nel codice
 function generateArray(max, inputsElements) {
     for (let i = 0; i < max; i++) {
         const inputElement = inputsElements[i].value;
-        if(!inputElement) {
-            alert('Non hai scritto dei numeri');
+        if (inputElement < 0 || inputElement > 100) {
+            result.innerText = 'I numeri inseriti devono essere compresi tra 1 e 100!';
+            result.classList.add('text-danger');
+            console.log(inputElement);
+            return;
+        } else if(!inputElement) {
+            result.innerText = 'Non hai inserito dei caratteri numerici!';
+            result.classList.add('text-danger');
             console.log(inputElement);
             return;
         }
+        
         else inputsValue.push(parseInt(inputElement));
        
     } 
@@ -62,6 +69,9 @@ function createXinput(max) {
         const input = document.createElement('input');
         input.className = ('form-control');
         input.type = 'number';
+        input.required = true;
+        input.min = 0;
+        /* input.max = 100; */
         cols.appendChild(input);
         inputsNumb.appendChild(cols);
     }
@@ -89,7 +99,7 @@ function endGame(interval) {
     // Imponiamo una condizione in counter === 0
     if(counter === 0) {
         // Stoppiamo dopo 30 secondi il counter
-        clearInterval(interval, 30000);
+        clearInterval(interval, 1000);
         // Facciamo apparire gli elementi con una funzione
         AppearElements();
         // Mettiamo in ascolto il bottone submit sul click
@@ -133,7 +143,7 @@ const result = document.getElementById('result');
 // Preparo le variabili
 // Preparo il numero di elementi max da creare
 const maxLength = 5;
-let counter = 30;
+let counter =1;
 let randomNumbers = [];
 let inputsValue = [];
 let score = 0;
