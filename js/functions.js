@@ -36,3 +36,18 @@ function createNode(type, className = '', content = '') {
     node.append(content);
     return node;
 }
+
+
+// Funzione che crea un nodo 
+function createNodes(type, className, content, typeContent) {
+    const node = document.createElement(type);
+    node.className = className;
+    if (content === 'object') {
+        const subnode = document.createElement(typeContent);
+        node.appendChild(subnode);
+    }
+    else if (typeof content === 'string' || typeof content === 'number') {
+        node.append(content);
+    }
+    return node;
+}
