@@ -52,32 +52,54 @@ const form = document.querySelector('form');
 const RandNumbElement = document.getElementById('random-number');
 const counterElement = document.getElementById('counter');
 const inputsNumb = document.getElementById('inputs');
-const button = document.getElementById('button');
+const buttonPlay = document.getElementById('button-play');
+const buttonSubmit = document.getElementById('button-submit');
 const h2 = document.querySelector('h2');
 const p = document.querySelector('p');
 
 // Preparo le variabili
 // Preparo il numero di elementi max da creare
 const maxLength = 5;
-let counter = 30;
+let counter = 10;
 let randomNumbers = [];
 
 // # Fase di gestione eventi
 // Metto in ascolto sugli eventi il form con l'evento 'click'
-form.addEventListener('click', function(e) {
-    // ! Blocchiamo il comportamento del form
-    e.preventDefault();
+buttonPlay.addEventListener('click', function() {
     
-    button.disabled = true;
+    // Disabilitiamo il bottone
+    buttonPlay.classList.add('d-none');
 
+    // Richiamo la funzione che crea x nodi
     createXNode(maxLength);
+    // Creiamo una timing function che agisce ogni 1 secondo
     const interval = setInterval(() => {
+        // Imponiamo una condizione in counter === 0
         if(counter === 0) {
-            clearInterval(interval, 30000);
+            // Stoppiamo dopo 30 secondi il counter
+            clearInterval(interval, 10000);
+            // Cambiamo il testo dell h2
             h2.innerText = 'Inserisci i numeri che ricordi.'
+            // Facciamo scomparire il p con il counter
             p.classList.add('d-none');
+            // Facciamo scomparie i numeri random
             RandNumbElement.classList.add('d-none');
+            // Facciamo apparire gli input
             inputsNumb.classList.remove('d-none');
+
+            buttonSubmit.classList.remove('d-none');
+            buttonSubmit.addEventListener('click', function(e) {
+                // ! Blocchiamo il comportamento del form
+                e.preventDefault();
+                const inputsElements = document.querySelectorAll('input');
+                console.log(inputsElements)
+                const inputsValue = [];
+                for (let i = 0; i < inputsElements.length; i++) {
+                    inputsValue.push(inputsElements.value);
+                } 
+                console.table(inputsValue)
+            })
+
         }
         counterElement.innerText = counter--;
     }, 1000);
